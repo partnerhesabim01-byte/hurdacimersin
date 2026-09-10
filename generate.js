@@ -1,10 +1,10 @@
-// Static site generator for hurdacimersin.com.tr — run with `node generate.js`
+// Static site generator for guvenhurdametal.com.tr — run with `node generate.js`
 // Produces fully self-contained HTML pages (no server-side includes) so every
 // page carries its full content for search engines.
 const fs = require('fs');
 const path = require('path');
 
-const DOMAIN = 'https://hurdacimersin.com.tr';
+const DOMAIN = 'https://guvenhurdametal.com.tr';
 const BRAND = 'Mersin Hurdacı';
 const LEGAL = 'Güven Hurda Metal';
 const PHONE_DISPLAY = '0531 450 89 91';

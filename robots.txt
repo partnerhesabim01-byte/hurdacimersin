@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hurdacimersin.com.tr/sitemap.xml
+Sitemap: https://guvenhurdametal.com.tr/sitemap.xml
