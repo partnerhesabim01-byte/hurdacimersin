@@ -205,7 +205,7 @@ footer{background:var(--ink);color:#a7abaf;padding:46px 0 24px;border-top:1px so
   .nav-links.open{display:flex}
   .nav-links a{width:100%;padding:10px 0}
   .nav-call{display:none}
-  .nav-toggle{display:flex}
+  .nav-toggle{display:flex;margin-left:auto}
   .hero-grid h1{font-size:2.1rem}
   .hero-sec.compact h1{font-size:1.6rem}
   .svc-grid,.steps,.why-grid{grid-template-columns:1fr}
