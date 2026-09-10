@@ -186,7 +186,7 @@ function header(activeHref) {
   const links = NAV.map(n => `<a href="${n.href}"${n.href === activeHref ? ' class="active"' : ''}>${n.label}</a>`).join('\n      ');
   return `<header>
   <div class="nav">
-    <a href="index.html" class="brand"><span class="mark">${icon('recycle', 18)}</span><span>${BRAND}<small>${LEGAL}</small></span></a>
+    <a href="index.html" class="brand"><img src="img/logo.avif" alt="${BRAND} - ${LEGAL}" class="brand-logo"></a>
     <nav class="nav-links" id="navLinks">
       ${links}
     </nav>
