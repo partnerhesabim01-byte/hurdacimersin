@@ -1,8 +1,17 @@
 (function(){
+  var header = document.querySelector('header');
+  function syncHeaderHeight(){
+    if(header) document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+  }
+  syncHeaderHeight();
+  window.addEventListener('resize', syncHeaderHeight);
+  window.addEventListener('load', syncHeaderHeight);
+
   var toggle = document.getElementById('navToggle');
   var links = document.getElementById('navLinks');
   if(toggle && links){
     toggle.addEventListener('click', function(){
+      syncHeaderHeight();
       links.classList.toggle('open');
     });
   }
