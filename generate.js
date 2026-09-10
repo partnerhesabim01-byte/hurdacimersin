@@ -161,7 +161,7 @@ function reviewsGrid(limit) {
     </div>`;
 }
 
-function head(title, description, slug, jsonLd) {
+function head(title, description, slug, jsonLd, heroImage) {
   const canonical = `${DOMAIN}/${slug}`;
   return `<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -175,7 +175,7 @@ function head(title, description, slug, jsonLd) {
 <meta property="og:description" content="${description}">
 <meta property="og:url" content="${canonical}">
 <meta property="og:locale" content="tr_TR">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+${heroImage ? `<link rel="preload" as="image" href="${heroImage}" fetchpriority="high">\n` : ''}<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
@@ -276,16 +276,16 @@ function heroBlock(opts) {
     ? `<div class="hero-feats">${feats.map(f => `<div><span class="ic">${icon(f[0], 17)}</span>${f[1]}</div>`).join('')}</div>`
     : '';
   const textCol = `<div>${top}<h1>${title}</h1><p>${desc}</p>${acts}${featsHtml}</div>`;
-  const photoCol = image ? `<div class="hero-photo${compact ? ' compact' : ''}"><img src="${image}" alt="${imageAlt || ''}" loading="lazy"></div>` : '';
+  const photoCol = image ? `<div class="hero-photo${compact ? ' compact' : ''}"><img src="${image}" alt="${imageAlt || ''}" fetchpriority="high"></div>` : '';
   const gridClass = image ? 'hero-grid' : 'hero-grid single';
   return `<section class="hero-sec${compact ? ' compact' : ''}"><div class="container"><div class="${gridClass}">${textCol}${photoCol}</div></div></section>`;
 }
 
-function page({ slug, title, description, activeHref, bodyHtml, jsonLd }) {
+function page({ slug, title, description, activeHref, bodyHtml, jsonLd, heroImage }) {
   return `<!DOCTYPE html>
 <html lang="tr">
 <head>
-${head(title, description, slug, jsonLd)}
+${head(title, description, slug, jsonLd, heroImage)}
 </head>
 <body>
 ${header(activeHref)}
@@ -293,7 +293,7 @@ ${bodyHtml}
 ${footer()}
 ${callBar()}
 ${cookieBanner()}
-<script src="js/main.js"></script>
+<script src="js/main.js" defer></script>
 </body>
 </html>
 `;
@@ -381,11 +381,12 @@ writePage('index.html', {
   description: `Mersin genelinde demir, çelik, alüminyum, bakır, kurşun, beyaz eşya, klima ve kombi hurdası alıyoruz. Adresinizden teslim alır, kapıda peşin ödeme yaparız. ${PHONE_DISPLAY}`,
   activeHref: 'index.html',
   jsonLd: businessJsonLd,
+  heroImage: IMG.heroBg,
   bodyHtml: `
 ${heroBlock({
     tag: "Mersin'in Güvenilir Hurdacısı",
     title: `${BRAND} <span style="color:var(--accent)">| ${LEGAL}</span>`,
-    desc: "Demir, çelik, alüminyum, bakır, kurşun, beyaz eşya, klima ve kombi hurdanızı Mersin'in her ilçesinde adresinizden teslim alıyor, tartım sonrası bedelini kapıda peşin ödüyoruz.",
+    desc: "Demir, çelik, alüminyum, bakır, kurşun, beyaz eşya, klima ve kombi hurdanızı Mersin'in her ilçesinde adresinizden teslim alıyor, tartım sonrası bedelini kapıda peşin ödüyoruz. Adresinize geldiğimiz için Mersin'de en yakın hurdacıyı aramanıza gerek yok.",
     primaryCta: `<a href="tel:${PHONE_TEL}" class="btn btn-primary">${icon('phone', 16)} Hemen Ara: ${PHONE_DISPLAY}</a>`,
     secondaryCta: `<a href="hizmetlerimiz.html" class="btn btn-outline">Hizmetlerimizi İnceleyin</a>`,
     feats: [['pin', 'Adresinizden Teslim Alırız'], ['cash', 'Kapıda Peşin Ödeme'], ['scale', 'Hassas ve Güvenli Tartı'], ['clock', '7 Gün Hizmet']],
@@ -460,6 +461,7 @@ writePage('hakkimizda.html', {
   title: `Hakkımızda | ${BRAND}`,
   description: `${LEGAL} olarak Mersin genelinde güvenilir, hızlı ve çevreye duyarlı hurda alım hizmeti sunuyoruz. Adresinizden teslim alır, kapıda peşin ödeme yaparız.`,
   activeHref: 'hakkimizda.html',
+  heroImage: IMG.excavator,
   bodyHtml: `
 ${heroBlock({
     compact: true,
@@ -533,6 +535,7 @@ writePage('hizmetlerimiz.html', {
   title: `Hizmetlerimiz | Hurda Alım Kalemleri | ${BRAND}`,
   description: `Demir, çelik, alüminyum, bakır, kurşun, beyaz eşya, klima ve kombi hurdası alım hizmetlerimizi inceleyin. Adresinizden teslim alır, kapıda peşin ödeme yaparız.`,
   activeHref: 'hizmetlerimiz.html',
+  heroImage: IMG.demirCelik,
   bodyHtml: `
 ${heroBlock({
     compact: true,
@@ -583,6 +586,7 @@ SERVICES.forEach((s) => {
       areaServed: 'Mersin',
       url: `${DOMAIN}/${s.id}.html`,
     },
+    heroImage: SERVICE_IMG[s.id].hero,
     bodyHtml: `
 ${heroBlock({
       compact: true,
@@ -654,6 +658,7 @@ writePage('hizmet-bolgelerimiz.html', {
   title: `Hizmet Bölgelerimiz | Mersin'in Tüm İlçelerinde Hurdacı | ${BRAND}`,
   description: `${BRAND}, Akdeniz, Mezitli, Toroslar, Yenişehir, Tarsus, Silifke, Erdemli, Gülnar, Mut, Bozyazı, Aydıncık, Çamlıyayla ve Anamur'da hurda alım hizmeti verir.`,
   activeHref: 'hizmet-bolgelerimiz.html',
+  heroImage: IMG.excavator,
   bodyHtml: `
 ${heroBlock({
     compact: true,
@@ -688,6 +693,7 @@ DISTRICTS.forEach((d) => {
     title: `${d.name} Hurdacı | Adresten Hurda Alımı | ${BRAND}`,
     description: `${d.name} bölgesinde demir, çelik, bakır, alüminyum, beyaz eşya, klima ve kombi hurdası alıyoruz. Adresinizden teslim alır, kapıda peşin ödeme yaparız. ${PHONE_DISPLAY}`,
     activeHref: 'hizmet-bolgelerimiz.html',
+    heroImage: IMG.excavator,
     bodyHtml: `
 ${heroBlock({
       compact: true,
@@ -746,6 +752,8 @@ ${heroBlock({
 
 // ============ SSS ============
 const FAQ = [
+  ['Mersin\'de en yakın hurdacı hangisi?', `${BRAND}, Mersin'in tüm ilçelerinde adresinize gelerek hizmet verir; yani "en yakın hurdacı" aramanıza gerek kalmaz, siz hangi ilçede olursanız olun ekibimiz size gelir.`],
+  ['Hurdacı telefon numaranız nedir?', `Bize ${PHONE_DISPLAY} numaralı hattımızdan 7 gün ulaşabilir, hurda türünüzü ve adresinizi iletebilirsiniz.`],
   ['Hangi hurda türlerini alıyorsunuz?', 'Demir, çelik, alüminyum, bakır, kurşun hurdalarının yanı sıra buzdolabı, çamaşır makinesi gibi beyaz eşyaları, klima ve kombi hurdalarını da satın alıyoruz.'],
   ['Adresimden alım yapıyor musunuz?', 'Evet, hurdanızı taşımanıza gerek kalmadan belirttiğiniz adrese gelip teslim alıyoruz.'],
   ['Ödemeyi ne zaman yapıyorsunuz?', 'Tartım işlemi tamamlanır tamamlanmaz bedelini kapıda ve peşin olarak ödüyoruz.'],
@@ -793,6 +801,7 @@ writePage('iletisim.html', {
   description: `${BRAND} ile iletişime geçin: ${PHONE_DISPLAY}. Adres: ${ADDRESS}. 7 gün hurda alım talebiniz için bizi arayabilirsiniz.`,
   activeHref: 'iletisim.html',
   jsonLd: businessJsonLd,
+  heroImage: null,
   bodyHtml: `
 ${heroBlock({
     compact: true,
@@ -807,7 +816,7 @@ ${heroBlock({
       <span class="sec-tag">Bize Ulaşın</span>
       <h2 class="sec-title" style="margin-bottom:16px">İletişim Bilgilerimiz</h2>
       <div class="panel" style="margin-bottom:16px">
-        <h3>Telefon</h3>
+        <h3>Hurdacı Telefon Numarası</h3>
         <p style="margin:0 0 14px"><a href="tel:${PHONE_TEL}" style="font-weight:800;font-size:1.2rem;color:var(--accent)">${PHONE_DISPLAY}</a></p>
         <h3>Adres</h3>
         <p style="margin:0 0 14px;color:var(--ink-soft)">${ADDRESS}</p>
@@ -886,5 +895,56 @@ Sitemap: ${DOMAIN}/sitemap.xml
 `;
 fs.writeFileSync(path.join(__dirname, 'robots.txt'), robots, 'utf8');
 console.log('wrote robots.txt');
+
+// ============ LLMS.TXT (AI crawler / agent discovery file) ============
+const llmsDocs = [
+  ['Anasayfa', 'index.html', 'Hizmetler, hakkımızda, hizmet bölgeleri ve iletişim bilgilerine buradan ulaşılabilir.'],
+  ['Hizmetlerimiz', 'hizmetlerimiz.html', 'Demir-çelik, alüminyum, bakır, kurşun, beyaz eşya, klima ve kombi hurdası alım hizmetlerinin tamamı.'],
+  ...SERVICES.map(s => [s.name, `${s.id}.html`, s.short]),
+  ['Hizmet Bölgelerimiz', 'hizmet-bolgelerimiz.html', "Mersin'in tüm ilçelerinde (Akdeniz, Mezitli, Toroslar, Yenişehir, Tarsus, Silifke, Erdemli, Gülnar, Mut, Bozyazı, Aydıncık, Çamlıyayla, Anamur) verilen hizmet."],
+  ['Hakkımızda', 'hakkimizda.html', `${LEGAL} hakkında bilgi.`],
+  ['İletişim', 'iletisim.html', 'Telefon, adres ve harita bilgileri.'],
+  ['Sıkça Sorulan Sorular', 'sss.html', 'Hurda alım süreciyle ilgili en çok sorulan sorular ve cevapları.'],
+  ['Site Haritası', 'sitemap.xml', 'XML sitemap.'],
+];
+const llms = `# ${BRAND}
+
+> ${LEGAL} güvencesiyle Mersin ve tüm ilçelerinde (Akdeniz, Mezitli, Toroslar, Yenişehir, Tarsus, Silifke, Erdemli, Gülnar, Mut, Bozyazı, Aydıncık, Çamlıyayla, Anamur) demir, çelik, alüminyum, bakır, kurşun, beyaz eşya, klima ve kombi hurdası alan, adresinden teslim alıp kapıda peşin ödeme yapan hurdacı.
+
+Telefon: ${PHONE_DISPLAY}. Adres: ${ADDRESS}. Çalışma saatleri: 7 gün. Hizmet alanı: Mersin ili ve tüm ilçeleri.
+
+## Docs
+
+${llmsDocs.map(([label, slug, desc]) => `- [${label}](${DOMAIN}/${slug === 'index.html' ? '' : slug}): ${desc}`).join('\n')}
+
+## Optional
+
+- [Gizlilik ve Çerez Politikası](${DOMAIN}/gizlilik-politikasi.html): Toplanan veriler, çerez kullanımı ve KVKK bilgilendirmesi.
+`;
+fs.writeFileSync(path.join(__dirname, 'llms.txt'), llms, 'utf8');
+console.log('wrote llms.txt');
+
+// ============ ADS.TXT ============
+const adsTxt = `# ads.txt — ${BRAND} (${DOMAIN.replace('https://', '')})
+#
+# Bu dosya, IAB Tech Lab "Authorized Digital Sellers" standardidir ve
+# sitede yer alacak reklamlarin (or. Google AdSense) yetkili saticilarini beyan eder.
+# https://iabtechlab.com/ads-txt/
+#
+# ONEMLI: Google AdSense / Google Ad Manager hesabi actiginizda, hesabinizin
+# "Site" bolumunde size ozel "pub-XXXXXXXXXXXXXXXX" yayinci kimligini goreceksiniz.
+# Asagidaki satirdaki XXXXXXXXXXXXXXXX kismini kendi yayinci kimliginizle
+# degistirip yorum isaretini (#) kaldirdiginizda dosya aktif hale gelir.
+#
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+#
+# Google Ads (arama/reklam kampanyasi) calistirmak icin ads.txt ZORUNLU degildir;
+# bu dosya yalnizca sitede AdSense/Ad Manager reklami YAYINLAMAK isterseniz gereklidir.
+# Google Ads kampanyalarinda uyumluluk icin asil onemli olan; site genelinde net
+# isletme kimligi, adres/telefon bilgisi (bkz. iletisim.html) ve Gizlilik Politikasi
+# (bkz. gizlilik-politikasi.html) sayfalarinin bulunmasidir - bu site bunlari icerir.
+`;
+fs.writeFileSync(path.join(__dirname, 'ads.txt'), adsTxt, 'utf8');
+console.log('wrote ads.txt');
 
 console.log(`\nToplam ${allSlugs.length} HTML sayfası üretildi.`);

@@ -1,0 +1,18 @@
+# ads.txt — Mersin Hurdacı (guvenhurdametal.com.tr)
+#
+# Bu dosya, IAB Tech Lab "Authorized Digital Sellers" standardidir ve
+# sitede yer alacak reklamlarin (or. Google AdSense) yetkili saticilarini beyan eder.
+# https://iabtechlab.com/ads-txt/
+#
+# ONEMLI: Google AdSense / Google Ad Manager hesabi actiginizda, hesabinizin
+# "Site" bolumunde size ozel "pub-XXXXXXXXXXXXXXXX" yayinci kimligini goreceksiniz.
+# Asagidaki satirdaki XXXXXXXXXXXXXXXX kismini kendi yayinci kimliginizle
+# degistirip yorum isaretini (#) kaldirdiginizda dosya aktif hale gelir.
+#
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+#
+# Google Ads (arama/reklam kampanyasi) calistirmak icin ads.txt ZORUNLU degildir;
+# bu dosya yalnizca sitede AdSense/Ad Manager reklami YAYINLAMAK isterseniz gereklidir.
+# Google Ads kampanyalarinda uyumluluk icin asil onemli olan; site genelinde net
+# isletme kimligi, adres/telefon bilgisi (bkz. iletisim.html) ve Gizlilik Politikasi
+# (bkz. gizlilik-politikasi.html) sayfalarinin bulunmasidir - bu site bunlari icerir.

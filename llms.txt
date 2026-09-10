@@ -1,0 +1,26 @@
+# Mersin Hurdacı
+
+> Güven Hurda Metal güvencesiyle Mersin ve tüm ilçelerinde (Akdeniz, Mezitli, Toroslar, Yenişehir, Tarsus, Silifke, Erdemli, Gülnar, Mut, Bozyazı, Aydıncık, Çamlıyayla, Anamur) demir, çelik, alüminyum, bakır, kurşun, beyaz eşya, klima ve kombi hurdası alan, adresinden teslim alıp kapıda peşin ödeme yapan hurdacı.
+
+Telefon: 0531 450 89 91. Adres: Turunçlu Mahallesi 205. Cadde No:19, Mersin. Çalışma saatleri: 7 gün. Hizmet alanı: Mersin ili ve tüm ilçeleri.
+
+## Docs
+
+- [Anasayfa](https://guvenhurdametal.com.tr/): Hizmetler, hakkımızda, hizmet bölgeleri ve iletişim bilgilerine buradan ulaşılabilir.
+- [Hizmetlerimiz](https://guvenhurdametal.com.tr/hizmetlerimiz.html): Demir-çelik, alüminyum, bakır, kurşun, beyaz eşya, klima ve kombi hurdası alım hizmetlerinin tamamı.
+- [Demir ve Çelik Hurdası](https://guvenhurdametal.com.tr/demir-celik-hurdasi.html): Demir aksam, çelik konstrüksiyon ve hurda metal parçaların adresinizden alımı.
+- [Alüminyum Hurdası](https://guvenhurdametal.com.tr/aluminyum-hurdasi.html): İçecek kutusu, profil, jant ve endüstriyel alüminyum hurdalarının değerlendirilmesi.
+- [Bakır Hurdası](https://guvenhurdametal.com.tr/bakir-hurdasi.html): Elektrik kablosu, tesisat borusu ve her türlü bakır hurdasında peşin ödeme.
+- [Kurşun Hurdası](https://guvenhurdametal.com.tr/kursun-hurdasi.html): Akü, balans ve inşaat kurşunu dahil kurşun hurdalarının çevreye duyarlı alımı.
+- [Beyaz Eşya Hurdası](https://guvenhurdametal.com.tr/beyaz-esya-hurdasi.html): Buzdolabı, çamaşır makinesi, bulaşık makinesi ve fırın hurdası adresten alınır.
+- [Klima Hurdası](https://guvenhurdametal.com.tr/klima-hurdasi.html): Split klima, kompresör ve bakır boru içeren klima hurdalarının sökümü ve alımı.
+- [Kombi Hurdası](https://guvenhurdametal.com.tr/kombi-hurdasi.html): Arızalı kombi, boyler ve petek radyatör hurdalarının adresten alımı.
+- [Hizmet Bölgelerimiz](https://guvenhurdametal.com.tr/hizmet-bolgelerimiz.html): Mersin'in tüm ilçelerinde (Akdeniz, Mezitli, Toroslar, Yenişehir, Tarsus, Silifke, Erdemli, Gülnar, Mut, Bozyazı, Aydıncık, Çamlıyayla, Anamur) verilen hizmet.
+- [Hakkımızda](https://guvenhurdametal.com.tr/hakkimizda.html): Güven Hurda Metal hakkında bilgi.
+- [İletişim](https://guvenhurdametal.com.tr/iletisim.html): Telefon, adres ve harita bilgileri.
+- [Sıkça Sorulan Sorular](https://guvenhurdametal.com.tr/sss.html): Hurda alım süreciyle ilgili en çok sorulan sorular ve cevapları.
+- [Site Haritası](https://guvenhurdametal.com.tr/sitemap.xml): XML sitemap.
+
+## Optional
+
+- [Gizlilik ve Çerez Politikası](https://guvenhurdametal.com.tr/gizlilik-politikasi.html): Toplanan veriler, çerez kullanımı ve KVKK bilgilendirmesi.
